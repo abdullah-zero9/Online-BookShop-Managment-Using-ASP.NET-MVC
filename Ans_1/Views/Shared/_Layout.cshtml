@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - Book Haven</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+
+    @RenderSection("styles", false)
+    <style>
+        body {
+            padding-top: 80px;
+            font-size: 20px;
+        }
+
+        .nav-item:hover .nav-link {
+            background-color: red;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: lightgreen">
+            <div class="container">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "text-dark nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Category", "Index", "Categories", new { }, new { @class = "text-dark nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Books", "Index", "Books", new { }, new { @class = "text-dark nav-link" })</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer class="container" style="position: fixed; bottom: 0; left: 0; right: 0;">
+        <p class="text-center">&copy;@DateTime.Now.Year - Abdullah-1271691 </p>
+    </footer>
+    @RenderSection("scripts", false)
+    <script src="~/Scripts/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿@model Ans_1.Models.ViewModels.BookVM
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm("Edit", "Books", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            <h2 class="display-4">Edit @Model.BookName</h2>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.PicturePath)
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.BookName, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.EditorFor(x => x.BookName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.Price, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.EditorFor(x => x.Price, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.CId, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.DropDownListFor(x => x.CId, ViewBag.categories as SelectList, "-----Select-----", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.PublishDate, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.EditorFor(x => x.PublishDate, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.Picture, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", Type = "file" })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.Available, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.CheckBoxFor(x => x.Available, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="align-self-center">Yes</span>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn btn-outline-primary"> Update</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,90 @@
+﻿@model Ans_1.Models.ViewModels.BookVM
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col">
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "clearAll" }))
+        {
+            @Html.AntiForgeryToken();
+            <h2 class="display-5">Add New Book</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.BookName, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.EditorFor(x => x.BookName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.Price, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.EditorFor(x => x.Price, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.CId, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.DropDownListFor(x => x.CId, ViewBag.categories as SelectList, "-----Select-----", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.PublishDate, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.EditorFor(x => x.PublishDate, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.Picture, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", Type = "file" })
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                @Html.LabelFor(x => x.Available, htmlAttributes: new { @class = "col-form-label col-2" })
+                <div class="col-3 d-flex align-items-center">
+                    @Html.CheckBoxFor(x => x.Available, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="align-self-center">Yes</span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-1">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn btn-primary"> Save</button>
+                    <button type="reset" id="reset" class="btn btn-warning"> Reset</button>
+                    <div id="msg"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    <a href="@Url.Action("Index","Books")" class="btn btn-link mb-1 text-decoration-none"> Back to List</a>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+    <script>
+        $("#form0").attr("enctype", "multipart/form-data");
+        function clearAll() {
+            $("#form0").trigger("reset");
+        }
+        //$(document).ready(function () {
+        //    $('#reset').click(function () {
+        //        $('#form0').reset();
+        //    });
+        //});
+
+        //$(document).ready(function () {
+        //    $('#reset').click(function () {
+        //        clearAll();
+        //    });
+        //});
+
+    </script>
+}
+
+

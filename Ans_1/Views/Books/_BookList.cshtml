@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Ans_1.Models.Book>
+
+<div class="d-flex justify-content-end">
+    <a href="@Url.Action("Create","Books")" class="btn btn-outline-primary btn-sm mb-2">Add New</a>
+</div>
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Publish Date</th>
+            <th>Availability</th>
+            <th>Picture</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.BookName)</td>
+                <td>@Html.DisplayFor(x => item.Price)</td>
+                <td>@Html.DisplayFor(x => item.Category.CName)</td>
+                <td>@Html.DisplayFor(x => item.PublishDate)</td>
+                <td>@Html.DisplayFor(x => item.Avialable)</td>
+                <td>
+                    <img src="@Url.Content(item.PicturePath)" width="32" height="32" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","Books",new { id=item.Id})" class="btn btn-outline-success btn-sm "> Edit</a>
+                    <a href="@Url.Action("Delete","Books",new { id=item.Id})" class="btn btn-outline-danger btn-sm"> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

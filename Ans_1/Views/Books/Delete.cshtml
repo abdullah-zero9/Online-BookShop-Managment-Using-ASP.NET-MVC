@@ -1,0 +1,17 @@
+﻿@model Ans_1.Models.Book
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="alert alert-danger mt-2">Are you sure you want to delete @Model.BookName?</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-link" })
+    </div>
+}
+
+

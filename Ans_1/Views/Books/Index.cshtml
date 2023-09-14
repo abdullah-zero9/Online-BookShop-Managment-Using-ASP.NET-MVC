@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Ans_1.Models.Book>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="display-4">Book List</h2>
+        @Html.Partial("_BookList", Model)
+    </div>
+</div>
+
