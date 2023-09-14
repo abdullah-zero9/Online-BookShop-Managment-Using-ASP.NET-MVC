@@ -9,7 +9,8 @@ Welcome to the Online Bookshop Management ASP.NET MVC project! This web applicat
 - **Categorized Books**: Organize books into categories, making it easier for customers to find their preferred genres.
 
 - **Dynamic CSS**: Enhance the user interface with dynamic CSS styles to create an engaging and visually appealing website.
-![image](https://github.com/abdullah-zero9/Online-BookShop-Managment-Using-ASP.NET-MVC/assets/126222065/106575c2-ac26-486f-a310-746360dc1929)
+![image](https://github.com/abdullah-zero9/Online-Bookshop-Managment-Using-ASP.NET-MVC/assets/126222065/c193ab0a-12ee-479f-aa7f-3dba22fc0713)
+
 
 ## Technologies Used
 
